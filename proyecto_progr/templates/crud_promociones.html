@@ -1,0 +1,116 @@
+{% extends 'plantilla_menu.html' %}
+{% load static %}
+
+{%block contenido%}
+	<!-- SECCION CATALOGO -->
+
+  
+
+	<section>
+    <h2>CRUD| Promociones </h2>
+    <div class="card" style="width: 18rem;">
+      <div class="img-container">
+        <span class="promo">15% de descuento</span>
+        <img src="https://www.prosan.cl/370-large_default/tierra-de-hoja-compostada-prosan-30-litros-para-todo-tipo-de-plantas.jpg" class="card-img-top"
+          alt="...">
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">Tierra Compostada</h5>
+          <strong>$19.990</strong>
+          <br>
+          <strong>$2̶2̶.̶9̶9̶0̶</strong>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+          <strong>Stock Disponible: +10 Unidades</strong>
+          <a href="#" class="btn btn-primary">AGREGAR AL CARRITO</a>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <div class="img-container">
+        <span class="promo">15% de descuento</span>
+        <img src="https://www.prosan.cl/370-large_default/tierra-de-hoja-compostada-prosan-30-litros-para-todo-tipo-de-plantas.jpg" class="card-img-top"
+          alt="...">
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">Tierra Compostada</h5>
+          <strong>$19.990</strong>
+          <br>
+          <strong>$2̶2̶.̶9̶9̶0̶</strong>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+          <strong>Stock Disponible: +10 Unidades</strong>
+          <a href="#" class="btn btn-primary">AGREGAR AL CARRITO</a>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <div class="img-container">
+        <span class="promo">15% de descuento</span>
+        <img src="https://www.prosan.cl/370-large_default/tierra-de-hoja-compostada-prosan-30-litros-para-todo-tipo-de-plantas.jpg" class="card-img-top"
+          alt="...">
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">Tierra Compostada</h5>
+          <strong>$19.990</strong>
+          <br>
+          <strong>$2̶2̶.̶9̶9̶0̶</strong>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+          <strong>Stock Disponible: +10 Unidades</strong>
+          <a href="#" class="btn btn-primary">AGREGAR AL CARRITO</a>
+      </div>
+    </div>
+
+  </section>
+
+
+
+    <h2>Agregar Promociones</h2>
+    <div class="contenedor"> 
+      <div class="carta">
+              <form class="form-control" action="#" method="post">
+                  <label>Producto: </label>
+                  <select id="eligeProducto" class="form-control">
+                    <option value="0" selected disabled>Seleccione...</option>
+                    <option value="1">Producto 1</option>
+                    <option value="2">Producto 2</option>
+                    <option value="3">Producto 3</option>
+                    <option value="4">Producto 4</option>
+                    <option value="5">Producto 5</option>
+                  </select>
+                  <br>
+                  <label>Porcentaje de Descuento: </label>
+                  <input id="porcentajeDesc" type="text" class="form-control" value="" placeholder="%">
+                  <br>
+                  <!-- <label>Nuevo Precio: </label>
+                  <input id="precioNuevo" type="text" class="form-control" value="" placeholder="$">
+                  <br> -->
+                  <label>Fecha caducidad promoción: </label>
+                  <input id="fechaCaduce" type="date" class="form-control" >      
+                  <br>          
+                  <a  type="submit" id="btnGuardar" class="btn btn-lg btn-warning btn-block btn-signin btn-sm">Agregar Promoción</a>
+              </form>
+      </div>
+  </div>
+  
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+
+  <!-- ALERTIFY JS-  -->
+<!-- JavaScript -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+<!-- CSS -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+
+
+  <script src="{% static 'js/crud_promociones.js' %}"></script>
+
+{% endblock contenido%}
