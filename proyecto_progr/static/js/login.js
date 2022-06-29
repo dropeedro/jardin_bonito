@@ -14,7 +14,7 @@ $('#btnIngreso').on('click', function(e){
     if(validaFormulario()){
         alertify.alert('Inicio de sesión exitoso', `Bienvenido "${nombreUsuario.val()}"`);
         setTimeout(() => {
-            window.location.href = '../index';
+            window.location.href = '../';
         }, 2000);
     }
 

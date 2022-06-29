@@ -8,74 +8,25 @@
 
   <section>
     <h2>CATALOGO | FLORES</h2>
+    
+    {% for i in productos %}
     <div class="card" style="width: 18rem;">
       <div class="img-container">
-        <span class="promo">15% de descuento</span>
-        <img src="https://www.flordeplanta.com.ar/wp-content/uploads/2011/05/tulipanes.jpg" class="card-img-top"
+        <!-- <span class="promo">15% de descuento</span> -->
+        <img src="/{{i.imagen}}" class="card-img-top"
           alt="...">
       </div>
       <div class="card-body">
-        <h3 class="card-title">Tulipanes Variedad</h5>
-          <strong>$19.990</strong>
+        <h3 class="card-title">{{ i.nombreProducto }}</h5>
+          <strong>${{ i.precio }}</strong>
           <br>
-          <strong>$2̶2̶.̶9̶9̶0̶</strong>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <strong>Stock Disponible: +10 Unidades</strong>
+          <!-- <strong>$2̶2̶.̶9̶9̶0̶</strong> -->
+          <p class="card-text">{{ i.descripcion }}</p>
+          <strong>Stock Disponible: {{ i.stock }}</strong>
           <a href="#" class="btn btn-primary">AGREGAR AL CARRITO</a>
       </div>
     </div>
-    <div class="card" style="width: 18rem;">
-      <div class="img-container">
-        <span class="promo">15% de descuento</span>
-        <img src="https://www.flordeplanta.com.ar/wp-content/uploads/2011/05/tulipanes.jpg" class="card-img-top"
-          alt="...">
-      </div>
-      <div class="card-body">
-        <h3 class="card-title">Tulipanes Variedad</h5>
-          <strong>$19.990</strong>
-          <br>
-          <strong>$2̶2̶.̶9̶9̶0̶</strong>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <strong>Stock Disponible: +10 Unidades</strong>
-          <a href="#" class="btn btn-primary">AGREGAR AL CARRITO</a>
-      </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-      <div class="img-container">
-        <span class="promo">15% de descuento</span>
-        <img src="https://www.flordeplanta.com.ar/wp-content/uploads/2011/05/tulipanes.jpg" class="card-img-top"
-          alt="...">
-      </div>
-      <div class="card-body">
-        <h3 class="card-title">Tulipanes Variedad</h5>
-          <strong>$19.990</strong>
-          <br>
-          <strong>$2̶2̶.̶9̶9̶0̶</strong>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <strong>Stock Disponible: +10 Unidades</strong>
-          <a href="#" class="btn btn-primary">AGREGAR AL CARRITO</a>
-      </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-      <div class="img-container">
-        <span class="promo">15% de descuento</span>
-        <img src="https://www.flordeplanta.com.ar/wp-content/uploads/2011/05/tulipanes.jpg" class="card-img-top"
-          alt="...">
-      </div>
-      <div class="card-body">
-        <h3 class="card-title">Tulipanes Variedad</h5>
-          <strong>$19.990</strong>
-          <br>
-          <strong>$2̶2̶.̶9̶9̶0̶</strong>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <strong>Stock Disponible: +10 Unidades</strong>
-          <a href="#" class="btn btn-primary">AGREGAR AL CARRITO</a>
-      </div>
-    </div>
+    {% endfor %}
   </section>
 
 
