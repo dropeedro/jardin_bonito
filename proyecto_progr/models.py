@@ -9,7 +9,7 @@ class Producto(models.Model):
     descripcion = models.CharField(max_length=255)
     precio = models.IntegerField()
     stock = models.IntegerField()
-    imagen = models.ImageField(upload_to = 'static/images/' ,null = True)
+    imagen = models.ImageField(upload_to = 'productos' ,null = True)
 
     def __str__(self) -> str:
         return self.nombreProducto

@@ -4,7 +4,7 @@ from .models import *
 from .forms import *
 # Create your views here.
 def index(request):
-    contexto = {'productos': Producto.objects.all()}
+    contexto = {'productos': Producto.objects.all()[:4]}
     return render(request, 'index.html', contexto)
     
 def mostrarProductos(request):
