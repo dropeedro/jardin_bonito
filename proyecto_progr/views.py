@@ -11,18 +11,10 @@ def mostrarProductos(request):
     contexto = {'productos': Producto.objects.all()}
     return render(request, 'crud_productos.html', contexto)
 
-def catalogo_macetas(request):
-    return render(request, 'catalogo_macetas.html')
-
-def catalogo_flores(request):
+def catalogo_productos(request):
     contexto = {'productos': Producto.objects.all()}
-    return render(request, 'catalogo_flores.html', contexto)
+    return render(request, 'catalogo_productos.html', contexto)
 
-def catalogo_arbustos(request):
-    return render(request, 'catalogo_arbustos.html')
-
-def catalogo_tierra(request):
-    return render(request, 'catalogo_tierra.html')
 
 def misCompras(request):
     return render(request, 'misCompras.html')
@@ -47,5 +39,14 @@ def crearProducto(request):
     return render(request, 'crud_productos.html', datos)
 
 def crearPromociones(request):
-    return render(request, 'crud_promociones.html')
-        
+    datos = {
+        "form": PromocionesForm()
+        }
+    if request.method == 'POST':
+        form = PromocionesForm(data = request.POST)
+        if form.is_valid:
+            form.save()
+            datos["mensaje"] = "Promoción agregada correctamente"
+        else:
+            datos["form"] = form
+    return render(request, 'crud_promociones.html', datos)

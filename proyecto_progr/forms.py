@@ -13,3 +13,13 @@ class ProductoForm(ModelForm):
                 'stock',
                 'imagen'
                 ]
+
+class PromocionesForm(ModelForm):
+    class Meta:
+        model = Promocion
+        fields = [
+            'idPromocion',
+            'id_producto',
+            'porc_descuento',
+            'fecha_caducidad',
+        ]
