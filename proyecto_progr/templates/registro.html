@@ -1,4 +1,5 @@
 {%load static%}
+{% load crispy_forms_tags %}
 
 
 <html lang="en">
@@ -12,34 +13,25 @@
 </head>
 <body>
 
+
     <div class="contenedor"> 
         <div class="carta">
               <h2>REGISTRATE</h2>
                 <p id="profile-name" class="profile-name-card"></p>
-                <form class="form-signin">
-                    <label>Nombre: </label>
-                    <input type="text" id="nombreCliente" class="form-control" placeholder="Nombre Completo"  autofocus>
-                    <label>Usuario: </label>
-                    <input type="text" id="nombreUsuario" class="form-control" placeholder="Nombre de usuario" >      
-                    <label>Email: </label>
-                    <input type="email" id="emailUsuario" class="form-control" placeholder="Email" >      
-                    <label>Contraseña: </label>
-                    <input type="password" id="contrasena" class="form-control" placeholder="Contraseña" >      
-                    <br>          
-                    <button id="btnRegistro" class="btn btn-lg btn-warning btn-block btn-signin btn-sm">Registrarse</button>
-                    <br>
-                    <p>¿Ya tienes un usuario? Ingresa <strong><a href="{% url 'login' %}">AQUÍ</a></strong></p>
-                    <div id="volver">
-
-                        <button type="button" class="btn btn-warning"><a href="{% url 'index' %}">VOLVER AL INICIO</a><i
-                            class="fa fa-envelope"></i></button>
-                      </div>
+                <form class="form-signin" method="post">
+                    {% csrf_token %}
+                    {{form | crispy}}
+                    <button type="submit" id="submit" class="btn btn-primary">Registrarse</button>
                 </form>
-        </div>
-
-    </div>
-
-    
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="notification {{message.tags}}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>      
     <script
     src="https://code.jquery.com/jquery-3.6.0.js"
     integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
