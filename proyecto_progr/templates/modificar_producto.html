@@ -4,26 +4,29 @@
 
 {%block contenido%}
 
-	<section>
-    <h2>CRUD| Promociones </h2>
-  </section>
-    <h2>Agregar Promociones</h2>
+<link rel="stylesheet" type="text/css" href="{% static 'css/crud.css' %}">	
+
+  <section>
+    <h2>Editar Productos</h2>
     <div class="container"> 
       <div class="col-12">
         <form class="form-control" action="" method="post" enctype="multipart/form-data">
           {% csrf_token %}
+          <h2>Editar Productos
+          </h2>
           {{ form | crispy  }}
           
           <div class="d-flex justify-content-end">
-            <input type="submit" value="Guardar" class="btn btn-primary">
+            <input type="submit" value="Actualizar" class="btn btn-primary">
             &nbsp;
             <input type="reset" value="Cancelar" class="btn btn-secondary">
           </div>
-        
         </form>
       </div>
     </div>
-  <script
+
+</section>
+    <script
   src="https://code.jquery.com/jquery-3.6.0.js"
   integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
   crossorigin="anonymous"></script>
@@ -42,6 +45,7 @@
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
 
 
-  <script src="{% static 'js/crud_promociones.js' %}"></script>
+  <script src="{% static 'js/crud_productos.js' %}"></script>
 
-{% endblock contenido%}
+  {% endblock contenido%}
+  

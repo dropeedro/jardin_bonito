@@ -18,7 +18,7 @@ class Promocion(models.Model):
     idPromocion = models.IntegerField(primary_key = True)
     id_producto = models.ForeignKey(Producto, on_delete = models.CASCADE)
     porc_descuento = models.IntegerField()
-    fecha_caducidad = models.DateField()
+    fecha_caducidad = models.CharField(max_length=250)
     
     def __str__(self) -> str:
         return self.porc_descuento
