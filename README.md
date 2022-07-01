@@ -7,17 +7,25 @@ Comandos para iniciar el proyecto
 
 1 -Instala Django
 > pipenv install django
+
 2 -Instala oracle db
 > pipenv install cx_oracle
+
 3 -Instala Crispy Forms
 > pipenv install django-crispy-forms
+
 4 -Acceder a sqlplus y crear usuario
->create user django identified by django;
+```
+create user django identified by django;
 >grant connect, resource to django;
 >alter user django default tablespace users quota unlimited on users;
+```
 5 - Ejecutar migraciones.
->python manage.py makemigrations
->python manage.py migrate
+```
+python manage.py makemigrations
+python manage.py migrate
+```
+
 6- Crear superusuario
 >python manage.py createsuperuser
 
