@@ -68,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'proyecto_progr.context_processor.total_carrito',
             ],
         },
     },
@@ -84,9 +85,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'prueba_programacion',
         'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'PORT': '3307',
         'USER': 'root',
-        'PASSWORD': 'Duoc.2022',
+        'PASSWORD': '',
     }
 }
 

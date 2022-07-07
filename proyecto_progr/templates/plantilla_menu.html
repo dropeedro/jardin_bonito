@@ -79,53 +79,57 @@
           <input class="form-control me-2" type="Buscar..." placeholder="Buscar..." aria-label="Buscar...">
           <!-- <div class="carrito"> -->
           <button class="lupa btn btn-outline-success" type="submit"><img src="{% static 'images/lupa.png' %}" alt=""></button>
-          <div class="carrito">
+          <div class="carrito" >
             <ul>
               <li class="submenu">
                 <img src="{% static 'images/carro.png' %}" id="img-carrito">
                 <div id="carrito">
-                  <table id="lista-carrito" class="u-full-width">
+                  <table class="table table-striped" style="width: 500px;" >
                     <thead>
                       <tr>
-                        <th>Imagen</th>
                         <th>Nombre</th>
-                        <th>Precio</th>
+                        <th>Precio Total</th>
                         <th>Cantidad</th>
-                        <th></th>
+                        <th>Acción</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>
-                          <img src="https://www.flordeplanta.com.ar/wp-content/uploads/2011/05/tulipanes.jpg"
-                            width="100">
-                        </td>
-                        <td>Peonías Variedad</td>
-                        <td>$19.990</td>
-                        <td> 1 </td>
-                        <td>
-                          <a href="#" class="borrar-item">X</a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <img
-                            src="https://www.vallesdelsol.cl/wp-content/uploads/2020/11/MACETERO-GEOME%CC%81TRICO-AUTORREGABLE-TOMOMI-WHITE-DECO2-scaled.jpg"
-                            width="100">
-                        </td>
-                        <td>Maceteros de Sala</td>
-                        <td>$49.900</td>
-                        <td>1 </td>
-                        <td>
-                          <a href="#" class="borrar-item" data-id="1">X</a>
-                        </td>
-                      </tr>
+                      {% if request.session.carrito.items %}
+                      {% for key, value in request.session.carrito.items %}
+                        <tr>  
+                            <td>{{value.nombre}}</td>
+                            <td>${{value.acumulado}}</td>
+                            <td>{{value.cantidad}}</td>
+                            <td>
+                              <a href="{% url 'sumar' value.idProducto %}" class="badge btn btn-primary badge-primary">+</a>
+                              <a href="{% url 'restar' value.idProducto %}" class="badge btn btn-danger badge-danger">-</a>
+                            </td>
+                        </tr>
+                      {% endfor %}
+                      {% else %}
+                        <tr>
+                          <td colspan="4">
+                            <div class="alert alert-danger text-center">Sin Productos</div>
+                          </td>
+                        </tr>
+                      {% endif %}
+                        
+                          <td colspan="2">
+                            <div class="alert alert-success">Total: </div>
+                          </td>
+                          <td colspan="2">
+                            <div class="alert alert-success">${{total_carrito}} </div>
+                          </td>
+                          
+                        
                     </tbody>
                   </table>
                   <div class="div-carrito">
-                    <a href="#" id="vaciar-carrito" class="vaciar-carrito">Ver Carrito</a>
+                    <a href="{% url 'Limpiar'%}" id="vaciar-carrito" class="vaciar-carrito">Vaciar Carrito</a>
                     &nbsp;
-                    <a href="#" id="vaciar-carrito" class="vaciar-carrito">Vaciar Carrito</a>
+                    {% if request.session.carrito.items %}
+                    <a href="#" id="vaciar-carrito" class="vaciar-carrito">Hace Compra</a>
+                    {% endif %}
                   </div>
                 </div>
               </li>

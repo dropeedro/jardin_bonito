@@ -19,4 +19,8 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(template_name='logout.html'), name='logout'),
     path('misCompras/', views.misCompras, name='misCompras'),
     path('registro/', views.registro, name='registro'),
+    path('agregar/<int:producto_id>/', views.agregarProducto_carrito, name="sumar"),
+    path('eliminar/<int:producto_id>/', views.eliminarProducto_carrito, name="Eliminar"),
+    path('restar/<int:producto_id>/', views.restarProducto_carrito, name="restar"),
+    path('limpiar/', views.limpiarCarrito, name="Limpiar"),
 ]

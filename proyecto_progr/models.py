@@ -1,4 +1,5 @@
 from distutils.command.upload import upload
+from statistics import mode
 from django.db import models
 
 # Create your models here.
@@ -23,3 +24,19 @@ class Promocion(models.Model):
     def __str__(self) -> str:
         return self.porc_descuento
 
+class Compra(models.Model):
+    idCompra = models.IntegerField(primary_key=True)
+    idCliente = models.CharField(max_length=200, null=True)
+    fechaCompra = models.DateTimeField(auto_now_add=True)
+    total = models.IntegerField()
+
+    def __str__(self) -> str:
+        return self.idCompra
+
+class DetalleCompra(models.Model):
+    idProducto = models.ForeignKey(Producto, on_delete= models.CASCADE)
+    cantidad = models.IntegerField(default = 1)
+    idCompra = models.ForeignKey(Compra, on_delete= models.CASCADE)
+
+    def __str__(self) -> str:
+        return self.idProducto.idProducto

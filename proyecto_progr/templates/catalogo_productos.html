@@ -22,7 +22,7 @@
           <!-- <strong>$2̶2̶.̶9̶9̶0̶</strong> -->
           <p class="card-text">{{ i.descripcion }}</p>
           <strong>Stock Disponible: {{ i.stock }}</strong>
-          <a href="#" class="btn btn-primary">AGREGAR AL CARRITO</a>
+          <a href="{%url 'sumar' i.idProducto %}" class="btn btn-primary">AGREGAR AL CARRITO</a>
       </div>
     </div>
     {% endfor %}

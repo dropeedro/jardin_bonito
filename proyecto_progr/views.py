@@ -1,9 +1,12 @@
-from itertools import product
+from imp import reload
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from .models import *
 from .forms import *
+from proyecto_progr.carrito import Carrito
+import json, random
 
 # Create your views here.
 def index(request):
@@ -25,6 +28,8 @@ def misCompras(request):
 def login(request):
     return render(request, 'login.html')
 
+#crea productos (crud) 
+
 def crearProducto(request):
     datos = {
         "form": ProductoForm()
@@ -38,6 +43,7 @@ def crearProducto(request):
             datos["form"] = form
     return render(request, 'crud_productos.html', datos)
 
+#crea promociones (crud) 
 def crearPromociones(request):
     datos = {
         "form": PromocionesForm()
@@ -51,6 +57,7 @@ def crearPromociones(request):
             datos["form"] = form
     return render(request, 'crud_promociones.html', datos)
 
+#registra usuario
 def registro(request):
     form = UserRegisterForm(request.POST)
     if form.is_valid():
@@ -123,3 +130,47 @@ def eliminarPromocion(request, id):
     promociones = get_object_or_404(Promocion, idPromocion = id)
     promociones.delete()
     return redirect(to = "listar_promociones")
+
+#CARRITO DE COMPRAS
+def carrito(request):
+    productos = Producto.objects.all()
+    return render(request, "plantilla_menu.html", {'productos' : productos})
+
+def agregarProducto_carrito(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(idProducto = producto_id)
+    carrito.agregar(producto)
+    return redirect(request.META['HTTP_REFERER'])
+
+def eliminarProducto_carrito(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(idProducto = producto_id)
+    carrito.eliminar(producto)
+    return redirect(request.META['HTTP_REFERER'])
+
+def restarProducto_carrito(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(idProducto = producto_id)
+    carrito.restar(producto)
+    return redirect(request.META['HTTP_REFERER'])
+
+def limpiarCarrito(request):
+    carrito = Carrito(request)
+    carrito.limpiar()
+    return redirect(request.META['HTTP_REFERER'])
+
+## Guarda compra
+@login_required(login_url="/login")
+def hacerCompra(request):
+    compra = Compra.objets.create(user = request.user)
+    carrito = DetalleCompra(request)
+    detalle_compra = list()
+    for key, value in carrito.carrito.items():
+        detalle_compra.append(DetalleCompra(
+            idProducto = key,
+            cantidad = value["cantidad"],
+            user = request.user,
+            compra = compra
+        ))
+    DetalleCompra.objects.bulk_create(detalle_compra)
+    messages.success(request, "Compra realizada con éxito")
